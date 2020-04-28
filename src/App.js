@@ -12,9 +12,11 @@ export default class App extends Component {
     }
   }
 
-  addToFavorites = (character) => {
-    this.setState({favorites: [...this.state.favorites, character]})
-  }
+addToFavorites = (character) => {
+  this.setState({favorites: [...this.state.favorites, character]})
+}
+
+
   componentDidMount(){
     fetch('https://rickandmortyapi.com/api/character/')
       .then(response => response.json())
@@ -26,7 +28,7 @@ export default class App extends Component {
   render(){
     return(
       <div className='App'>
-        <Favorites />
+        <Favorites favorites={this.state.favorites} />
         <h1>Rick and Morty Characters</h1>
         <MainContainer characters={this.state.characters} addToFavorites={this.addToFavorites}/>
       </div>
